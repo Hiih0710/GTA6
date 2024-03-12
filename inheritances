@@ -1,0 +1,81 @@
+import java.util.Scanner;
+// Employee class
+class Employee {
+ // Data members
+ String name;
+ double salary;
+ // Constructor
+ public Employee(String name, double salary) {
+ this.name = name;
+ this.salary = salary;
+ }
+ // Method to read employee information
+ public void readInfo() {
+ Scanner scanner = new Scanner(System.in);
+ System.out.print("Enter employee name: ");
+ name = scanner.nextLine();
+ System.out.print("Enter employee salary: ");
+ salary = scanner.nextDouble();
+ }
+ // Method to display employee information
+ public void displayInfo() {
+ System.out.println("Employee name: " + name);
+ System.out.println("Employee salary: " + salary);
+ }
+}
+// Manager class (inherits from Employee)
+class Manager extends Employee {
+ // Data member
+ String department;
+ // Constructor
+ public Manager(String name, double salary, String 
+department) {
+ super(name, salary);
+ this.department = department;
+ }
+ // Method to read manager information
+ public void readInfo() {
+ super.readInfo(); // Call parent class method
+ Scanner scanner = new Scanner(System.in);
+ System.out.print("Enter manager department: ");
+ department = scanner.nextLine();
+ }
+ // Method to display manager information
+ public void displayInfo() {
+ super.displayInfo(); // Call parent class method
+ System.out.println("Manager department: " + 
+department);
+ }
+}
+// Executive class (inherits from Manager)
+class Executive extends Manager {
+ // Data member
+ String location;
+ // Constructor
+ public Executive(String name, double salary, String 
+department, String location) {
+ super(name, salary, department);
+ this.location = location;
+ }
+ // Method to read executive information
+ public void readInfo() {
+ super.readInfo(); // Call parent class method
+ Scanner scanner = new Scanner(System.in);
+ System.out.print("Enter executive location: ");
+ location = scanner.nextLine();
+ }
+ // Method to display executive information
+ public void displayInfo() {
+ super.displayInfo(); // Call parent class method
+ System.out.println("Executive location: " + location);
+ }
+}
+// Main class to test Employee, Manager, and Executive 
+classes
+public class main {
+ public static void main(String[] args) {
+ Executive executive = new Executive("John", 10000, 
+"Management", "New York");
+ executive.displayInfo();
+ }
+}
