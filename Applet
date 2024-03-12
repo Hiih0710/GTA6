@@ -1,0 +1,61 @@
+import java.applet.Applet;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class SimpleCalculatorApplet extends Applet {
+    TextField firstNumberField;
+    TextField secondNumberField;
+    TextField resultField;
+    Choice operationChoice;
+
+    public void init() {
+        Label firstNumberLabel = new Label("Enter 1st no.");
+        Label secondNumberLabel = new Label("Enter 2nd no."); // Corrected line
+        Label resultLabel = new Label("Result");
+        firstNumberField = new TextField();
+        secondNumberField = new TextField();
+        resultField = new TextField("0");
+        resultField.setEditable(false);
+        operationChoice = new Choice();
+        operationChoice.add("+");
+        operationChoice.add("-");
+        operationChoice.add("*");
+        operationChoice.add("/");
+        add(firstNumberLabel);
+        add(firstNumberField);
+        add(secondNumberLabel);
+        add(secondNumberField);
+        add(resultLabel);
+        add(resultField);
+        add(operationChoice);
+        operationChoice.addActionListener(e -> actionPerformed(e));
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        double result = 0.0;
+        double firstNumber = Double.parseDouble(firstNumberField.getText());
+        double secondNumber = Double.parseDouble(secondNumberField.getText());
+        String operation = operationChoice.getSelectedItem();
+        switch (operation) {
+            case "+":
+                result = firstNumber + secondNumber;
+                break;
+            case "-":
+                result = firstNumber - secondNumber;
+                break;
+            case "*":
+                result = firstNumber * secondNumber;
+                break;
+            case "/":
+                if (secondNumber != 0) {
+                    result = firstNumber / secondNumber;
+                } else {
+                    resultField.setText("Error: Division by zero");
+                    return;
+                }
+                break;
+        }
+        resultField.setText(String.valueOf(result));
+    }
+}
