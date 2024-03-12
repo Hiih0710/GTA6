@@ -1,0 +1,124 @@
+import java.awt.*;
+import java.awt.event.*;
+
+public class Calculator extends Frame implements ActionListener {
+    TextField tf;
+    double num1, num2, result;
+    String op;
+
+    Calculator() {
+        tf = new TextField();
+        tf.setBounds(50, 50, 300, 40);
+        add(tf);
+
+        Button b0 = new Button("0");
+        Button b1 = new Button("1");
+        Button b2 = new Button("2");
+        Button b3 = new Button("3");
+        Button b4 = new Button("4");
+        Button b5 = new Button("5");
+        Button b6 = new Button("6");
+        Button b7 = new Button("7");
+        Button b8 = new Button("8");
+        Button b9 = new Button("9");
+        Button bdot = new Button(".");
+        Button bplus = new Button("+");
+        Button bminus = new Button("-");
+        Button bmult = new Button("*");
+        Button bdiv = new Button("/");
+        Button bequal = new Button("=");
+        Button bclear = new Button("C");
+
+        b0.setBounds(50, 100, 50, 40);
+        b1.setBounds(110, 100, 50, 40);
+        b2.setBounds(170, 100, 50, 40);
+        b3.setBounds(230, 100, 50, 40);
+        b4.setBounds(290, 100, 50, 40);
+        b5.setBounds(50, 150, 50, 40);
+        b6.setBounds(110, 150, 50, 40);
+        b7.setBounds(170, 150, 50, 40);
+        b8.setBounds(230, 150, 50, 40);
+        b9.setBounds(290, 150, 50, 40);
+        bdot.setBounds(50, 200, 50, 40);
+        bplus.setBounds(110, 200, 50, 40);
+        bminus.setBounds(170, 200, 50, 40);
+        bmult.setBounds(230, 200, 50, 40);
+        bdiv.setBounds(290, 200, 50, 40);
+        bequal.setBounds(170, 250, 100, 40);
+        bclear.setBounds(110, 250, 50, 40);
+
+        add(b0);
+        add(b1);
+        add(b2);
+        add(b3);
+        add(b4);
+        add(b5);
+        add(b6);
+        add(b7);
+        add(b8);
+        add(b9);
+        add(bdot);
+        add(bplus);
+        add(bminus);
+        add(bmult);
+        add(bdiv);
+        add(bequal);
+        add(bclear);
+
+        b0.addActionListener(this);
+        b1.addActionListener(this);
+        b2.addActionListener(this);
+        b3.addActionListener(this);
+        b4.addActionListener(this);
+        b5.addActionListener(this);
+        b6.addActionListener(this);
+        b7.addActionListener(this);
+        b8.addActionListener(this);
+        b9.addActionListener(this);
+        bdot.addActionListener(this);
+        bplus.addActionListener(this);
+        bminus.addActionListener(this);
+        bmult.addActionListener(this);
+        bdiv.addActionListener(this);
+        bequal.addActionListener(this);
+        bclear.addActionListener(this);
+
+        setLayout(null);
+        setVisible(true);
+        setSize(400, 350);
+        setTitle("Calculator");
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        String s = e.getActionCommand();
+
+        if (s.charAt(0) >= '0' && s.charAt(0) <= '9' || s.equals(".")) {
+            tf.setText(tf.getText() + s);
+        } else if (s.equals("C")) {
+            tf.setText("");
+        } else if (s.equals("+") || s.equals("-") || s.equals("*") || s.equals("/")) {
+            num1 = Double.parseDouble(tf.getText());
+            op = s;
+            tf.setText("");
+        } else if (s.equals("=")) {
+            num2 = Double.parseDouble(tf.getText());
+            if (op.equals("+")) {
+                result = num1 + num2;
+            } else if (op.equals("-")) {
+                result = num1 - num2;
+            } else if (op.equals("*")) {
+                result = num1 * num2;
+            } else if (op.equals("/")) {
+                if (num2 != 0)
+                    result = num1 / num2;
+                else
+                    tf.setText("Error: Cannot divide by zero");
+            }
+            tf.setText("" + result);
+        }
+    }
+
+    public static void main(String[] args) {
+        new Calculator();
+    }
+}
