@@ -1,0 +1,31 @@
+import java.awt.*;
+import java.awt.event.*;
+import java.util.Arrays;
+public class SortArray extends Frame implements 
+ActionListener {
+ TextArea unsortedArrayArea, sortedArrayArea;
+ Button sortButton;
+ int[] array = {5, 3, 8, 1, 4};
+ SortArray() {
+ setLayout(new FlowLayout());
+ unsortedArrayArea = new TextArea("Unsorted 
+Array:\n" + Arrays.toString(array), 5, 40);
+ add(unsortedArrayArea);
+ sortButton = new Button("Sort Array");
+ add(sortButton);
+ sortButton.addActionListener(this);
+ sortedArrayArea = new TextArea("Sorted Array:\n", 
+5, 40);
+ add(sortedArrayArea);
+ setSize(300, 300);
+ setVisible(true);
+ }
+ public void actionPerformed(ActionEvent e) {
+ Arrays.sort(array);
+ sortedArrayArea.setText("Sorted Array:\n" + 
+Arrays.toString(array));
+ }
+ public static void main(String[] args) {
+ new SortArray();
+ }
+}
