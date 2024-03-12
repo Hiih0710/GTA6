@@ -1,0 +1,41 @@
+//first create a main folder named "xyz"
+//Inside it create a folder named "prime",below is the 
+code for it
+package prime;
+public class radha{
+public int add(int a, int b){
+return a+b;
+}
+public int subtract(int a, int b){
+return a-b;
+}
+}
+// inside main folder create one more folder named 
+"factorial",below is the code for it
+package factorial;
+public class kanha{
+public int mul(int a, int b){
+return a*b;
+}
+public int div(int a, int b){
+return a/b;
+}
+}
+//Inside main folder write a java program
+import prime.radha;
+import factorial.kanha;
+public class primeFact{
+public static void main(String args[]){
+radha r=new radha();
+kanha k=new kanha();
+int result1 = r.add(5,9);
+System.out.println("Addition is: \t" + (result1));
+int result2 = r.subtract(5,9);
+System.out.println("Subtraction is:\t" + (result2));
+int result3 = k.mul(5,9);
+System.out.println("Addition is: \t" + (result3));
+int result4 = k.div(5,9);
+System.out.println("Addition is: \t" + (result4));
+}
+}
+// Execute this one code but also compile rest 3
