@@ -1,0 +1,48 @@
+import java.awt.*;
+import java.awt.event.*;
+public class factorial extends Frame implements 
+ActionListener {
+ Label l1,l2;
+ TextField t1,t2;
+ Button b1;
+ factorial() {
+ l1 = new Label("Enter a number:");
+ l1.setBounds(10, 30, 100, 20);
+ add(l1);
+l2=new Label("factorial is:");
+l2.setBounds(10,60,100,20);
+add(l2);
+ t1 = new TextField();
+ t1.setBounds(120, 30, 80, 20);
+ add(t1);
+ t2=new TextField();
+t2.setBounds(120,60,80,20);
+add(t2);
+ b1 = new Button("Calculate Factorial");
+ b1.setBounds(10, 90, 150, 30);
+ add(b1);
+ b1.addActionListener(this);
+ addWindowListener(new WindowAdapter() {
+ public void windowClosing(WindowEvent e) {
+ dispose();
+ }
+ });
+ setSize(300, 150);
+ setLayout(null);
+ setVisible(true);
+ }
+ public static void main(String args[]) {
+ factorial f = new factorial();
+ }
+ public void actionPerformed(ActionEvent e) {
+ String s1 = t1.getText();
+ int a = Integer.parseInt(s1);
+ int sum = 1;
+ if (e.getSource() == b1) {
+ for (int x = 1; x <= a; x++) {
+ sum *= x;
+ }
+ t2.setText(Integer.toString(sum));
+ }
+ }
+}
