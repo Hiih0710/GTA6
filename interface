@@ -1,0 +1,21 @@
+interface area{
+void areaCompute(float x, float y);
+}
+class Rectangle implements area{
+public void areaCompute(float x, float y){
+System.out.println("Area of Rectangle is: \t" + (x*y));
+}
+}
+class Circle implements area{
+public void areaCompute(float x, float y){
+System.out.println("Area of triangle is: \t" + (0.5*x*y));
+}
+}
+class main{
+public static void main(String args[]){
+Rectangle r=new Rectangle();
+Circle c=new Circle();
+r.areaCompute(4,8);
+c.areaCompute(9,7);
+}
+}
