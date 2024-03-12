@@ -1,0 +1,31 @@
+import java.util.Scanner;
+public class SalaryCalculator {
+ public static void main(String[] args) {
+ Scanner scanner = new Scanner(System.in);
+ // Input basic salary
+ System.out.print("Enter basic salary (Rs.): ");
+ double basicSalary = scanner.nextDouble();
+ // Calculate net salary based on criteria
+ double netSalary = calculateNetSalary(basicSalary);
+ // Display net salary
+ System.out.println("Net Salary (Rs.): " + netSalary);
+ scanner.close();
+ }
+ // Method to calculate net salary based on basic salary
+ public static double calculateNetSalary(double 
+basicSalary) {
+ double netSalary = 0;
+ if (basicSalary < 3000) {
+ netSalary = basicSalary + (basicSalary * 0.02);
+ } else if (basicSalary >= 3000 && basicSalary < 5000) 
+{
+ netSalary = basicSalary + (basicSalary * 0.05);
+ } else if (basicSalary >= 5000 && basicSalary < 10000) 
+{
+ netSalary = basicSalary + (basicSalary * 0.10);
+ } else {
+ netSalary = basicSalary + (basicSalary * 0.20);
+ }
+ return netSalary;
+ }
+}
