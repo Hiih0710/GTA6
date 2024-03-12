@@ -1,0 +1,89 @@
+import java.awt.*;
+import java.awt.event.*;
+public class factorial extends Frame implements 
+ActionListener {
+ Label l1, l2, l3;
+ TextField t1, t2, t3;
+ Button b1, b2, b3, b4, b5;
+ factorial() {
+ l1 = new Label("Enter first number:");
+ l1.setBounds(10, 30, 100, 20);
+ add(l1);
+ l2 = new Label("Enter second number:");
+ l2.setBounds(10, 60, 150, 20);
+ add(l2);
+ l3 = new Label("Result:");
+ l3.setBounds(10, 90, 150, 20);
+ add(l3);
+ t1 = new TextField();
+ t1.setBounds(150, 30, 120, 20);
+ add(t1);
+ t2 = new TextField();
+ t2.setBounds(150, 60, 120, 20);
+ add(t2);
+ t3 = new TextField();
+ t3.setBounds(150, 90, 120, 20);
+ add(t3);
+ b1 = new Button("Add");
+ b1.setBounds(10, 120, 70, 30);
+ add(b1);
+ b1.addActionListener(this);
+ b2 = new Button("Subtract");
+ b2.setBounds(90, 120, 70, 30);
+ add(b2);
+ b2.addActionListener(this);
+ b3 = new Button("Multiply");
+ b3.setBounds(170, 120, 70, 30);
+ add(b3);
+ b3.addActionListener(this);
+ b4 = new Button("Divide");
+ b4.setBounds(250, 120, 70, 30);
+ add(b4);
+ b4.addActionListener(this);
+ b5 = new Button("Modulus");
+ b5.setBounds(330, 120, 70, 30);
+ add(b5);
+ b5.addActionListener(this);
+ addWindowListener(new WindowAdapter() {
+ public void windowClosing(WindowEvent 
+e) {
+ dispose();
+ }
+ });
+ setSize(420, 180);
+ setLayout(null);
+ setVisible(true);
+ }
+ public static void main(String args[]) {
+ factorial f = new factorial();
+ }
+ public void actionPerformed(ActionEvent e) {
+ String s1 = t1.getText();
+ String s2 = t2.getText();
+ int a = Integer.parseInt(s1);
+ int b = Integer.parseInt(s2);
+ int c = 0;
+ if (e.getSource() == b1) {
+ c = a + b;
+ } else if (e.getSource() == b2) {
+ c = a - b;
+ } else if (e.getSource() == b3) {
+ c = a * b;
+ } else if (e.getSource() == b4) {
+ if (b != 0) {
+ c = a / b;
+ } else {
+ t3.setText("Cannot divide by zero!");
+ return;
+ }
+ } else if (e.getSource() == b5) {
+ if (b != 0) {
+ c = a % b;
+ } else {
+ t3.setText("Cannot mod by zero!");
+ return;
+ }
+ }
+ t3.setText(Integer.toString(c));
+ }
+}
