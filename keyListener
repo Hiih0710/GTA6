@@ -1,0 +1,40 @@
+import java.awt.*;
+import java.awt.event.*;
+
+public class KeyListenerDemo extends Frame implements KeyListener {
+    private Label infoLabel;
+
+    public KeyListenerDemo() {
+        setTitle("KeyListener Demo");
+        setSize(300, 200);
+        setLayout(new FlowLayout());
+
+        infoLabel = new Label("Press a key...");
+        add(infoLabel);
+
+        addKeyListener(this);
+
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent we) {
+                System.exit(0);
+            }
+        });
+    }
+
+    public void keyPressed(KeyEvent e) {
+        infoLabel.setText("Key Pressed: " + e.getKeyChar());
+    }
+
+    public void keyReleased(KeyEvent e) {
+        infoLabel.setText("Key Released: " + e.getKeyChar());
+    }
+
+    public void keyTyped(KeyEvent e) {
+        infoLabel.setText("Key Typed: " + e.getKeyChar());
+    }
+
+    public static void main(String[] args) {
+        KeyListenerDemo demo = new KeyListenerDemo();
+        demo.setVisible(true);
+    }
+}
