@@ -1,0 +1,36 @@
+public class Player {
+ // Data members
+ String pName;
+ int innings;
+ int runs;
+ int notOuts;
+ // Method to display player details
+ public void showData() {
+ System.out.println("Player Name: " + pName);
+ System.out.println("Innings: " + innings);
+ System.out.println("Runs: " + runs);
+ System.out.println("Not Outs: " + notOuts);
+ }
+ // Method to calculate batting average
+ public void calcAvg() {
+ // Calculate batting average
+ double battingAvg = runs / (double) (innings -
+notOuts);
+ System.out.println("Batting Average: " + 
+battingAvg);
+ }
+ // Main method to test Player class
+ public static void main(String[] args) {
+ // Create a player object
+ Player player1 = new Player();
+ // Set player details
+ player1.pName = "John";
+ player1.innings = 20;
+ player1.runs = 500;
+ player1.notOuts = 5;
+ // Display player details
+ player1.showData();
+ // Calculate and display batting average
+ player1.calcAvg();
+ }
+}
