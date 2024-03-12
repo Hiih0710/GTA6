@@ -1,0 +1,50 @@
+import java.awt.*;
+import java.awt.event.*;
+public class prime extends Frame implements 
+ActionListener{
+Label l1;
+TextField t1;
+Button b1;
+prime(){
+l1=new Label("Enter a number:");
+l1.setBounds(20, 40,100,20);
+add(l1);
+t1=new TextField();
+t1.setBounds(120,40,90,20);
+add(t1);
+b1=new Button("click me");
+b1.setBounds(100,90,80,20);
+add(b1);
+b1.addActionListener(this);
+addWindowListener(new WindowAdapter(){
+public void windowClosing(WindowEvent e){
+ dispose();
+}
+});
+setSize(400,300);
+setLayout(null);
+setVisible(true);
+}
+public static void main(String args[]){
+prime p=new prime();
+}
+public void actionPerformed(ActionEvent e){
+String s1=t1.getText();
+int a = Integer.parseInt(s1);
+int y = 0;
+if(e.getSource()==b1){
+for(int x=2;x<=a;x++)
+{
+if(a%x==0){
+y++;
+}
+if(y<=1){
+t1.setText("Prime");
+}
+else{
+t1.setText("Not Prime");
+}
+}
+}
+}
+}
