@@ -1,0 +1,28 @@
+public class myException extends Exception{
+public myException(String st){
+super(st);
+}
+}
+// can be executed on your system..
+class Student {
+// when executing online mention class with public 
+modifier
+ void check(int roll, String name, int age, String 
+course) throws myException {
+ if (age < 15 || age > 21) {
+ throw new myException("Age not 
+within the range");
+ } else {
+ System.out.println("Valid");
+ }
+}
+ public static void main(String args[]) {
+ Student s = new Student();
+try{
+ s.check(14, "kanha", 22, "bms");
+ }catch(myException e){
+System.out.println("Error:\t" + 
+(e.getMessage()));
+}
+}
+}
