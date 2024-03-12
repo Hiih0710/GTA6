@@ -1,0 +1,26 @@
+class Employee {
+ // Data members
+ int empNo;
+ String empName;
+ String job;
+ // Method to display employee details
+ void showInfo() {
+ System.out.println("Employee Number: " + empNo);
+ System.out.println("Employee Name: " + 
+empName);
+ System.out.println("Job: " + job);
+ }
+}
+class Salary extends Employee {
+ // Additional variables
+ float basic;
+ double newSal;
+ // Method to calculate new salary
+ void calculate(double perc) {
+ newSal = basic + (basic * perc / 100);
+ }
+ // Method to display basic salary
+ void dispData() {
+ System.out.println("Basic Salary: " + basic);
+ }
+}
