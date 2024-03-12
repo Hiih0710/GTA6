@@ -1,0 +1,14 @@
+import java.util.*;
+public class area{
+public static void main(String args[]){
+area a=new area();
+double z;
+Scanner s=new Scanner(System.in);
+System.out.println("Enter triangle's base:");
+int x=s.nextInt();
+System.out.println("Enter a triangle's height:");
+int y=s.nextInt();
+z=0.5*x*y;
+System.out.println("Area of Triangle is: \t" + (z));
+}
+}
