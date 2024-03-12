@@ -1,0 +1,55 @@
+import java.util.Scanner;
+public class BankAccount {
+ // Data Members
+ private String depositorName;
+ private long accountNumber;
+ private String accountType;
+ private double balance;
+ // Method to read account details
+ public void readAccountDetails() {
+ Scanner scanner = new Scanner(System.in);
+ System.out.print("Enter depositor's name: ");
+ depositorName = scanner.nextLine();
+ System.out.print("Enter account number: ");
+ accountNumber = scanner.nextLong();
+ scanner.nextLine(); // Consume newline
+ System.out.print("Enter account type 
+(Savings/Current): ");
+ accountType = scanner.nextLine();
+ balance = 500.00; // Initialize balance with 
+minimum balance
+ System.out.println("Account created 
+successfully!");
+ }
+ // Method to deposit amount
+ public void deposit(double amount) {
+ balance += amount;
+ System.out.println("Deposit successful.");
+ }
+ // Method to withdraw amount
+ public void withdraw(double amount) {
+ if (balance - amount >= 500.00) {
+ balance -= amount;
+ System.out.println("Withdrawal 
+successful.");
+ } else {
+ System.out.println("Insufficient balance! 
+Minimum balance must be maintained.");
+ }
+ }
+ // Method to display balance
+ public void displayBalance() {
+ System.out.println("Balance: Rs." + balance);
+ }
+ // Main method to test the BankAccount class
+ public static void main(String[] args) {
+ BankAccount account = new BankAccount();
+ account.readAccountDetails();
+ // Deposit some amount
+ account.deposit(1000.00);
+ // Withdraw some amount
+ account.withdraw(300.00);
+ // Display balance
+ account.displayBalance();
+ }
+}
