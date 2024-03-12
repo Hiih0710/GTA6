@@ -1,0 +1,48 @@
+import java.util.Scanner;
+public class DiscountCalculator {
+ public static void main(String[] args) {
+ Scanner scanner = new Scanner(System.in);
+ // Input credit card type
+ System.out.print("Enter credit card type 
+(VISA/XYZ/ABC): ");
+ String creditCardType = 
+scanner.nextLine().toUpperCase();
+ // Input shopping amount
+ System.out.print("Enter shopping amount: ");
+ double shoppingAmount = scanner.nextDouble();
+ // Calculate discount based on credit card type and 
+shopping amount
+ double discount = calculateDiscount(creditCardType, 
+shoppingAmount);
+ // Calculate net price
+ double netPrice = shoppingAmount -
+(shoppingAmount * discount / 100);
+ // Display net price
+ System.out.println("Net Price (Rs.): " + netPrice);
+ scanner.close();
+ }
+ // Method to calculate discount based on credit card type 
+and shopping amount
+ public static double calculateDiscount(String 
+creditCardType, double shoppingAmount) {
+ double discount = 0;
+ switch (creditCardType) {
+ case "VISA":
+ discount = shoppingAmount < 5000 ? 10 : 
+20;
+ break;
+ case "XYZ":
+ discount = shoppingAmount < 10000 ? 15 : 
+25;
+ break;
+ case "ABC":
+ discount = shoppingAmount < 8000 ? 12 : 
+15;
+ break;
+ default:
+ System.out.println("Invalid credit card 
+type!");
+ }
+ return discount;
+ }
+}
